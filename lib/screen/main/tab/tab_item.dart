@@ -7,7 +7,7 @@ import 'package:fast_app_base/screen/main/tab/near_me/f_near_me.dart';
 import 'package:flutter/material.dart';
 
 enum TabItem {
-  home(Icons.home, '홈', HomeFragment()),
+  home(Icons.home, '홈2', HomeFragment()),
   localLife(Icons.holiday_village_outlined, '동네생활', LocalLifeFragment()),
   nearMe(Icons.pin_drop_outlined, '내 근처', NearMeFragment()),
   chat(Icons.chat_bubble_outline, '채팅', ChatFragment()),
