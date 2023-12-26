@@ -3,11 +3,13 @@ import 'package:fast_app_base/common/dart/extension/num_duration_extension.dart'
 import 'package:fast_app_base/common/widget/animated_height_collapse.dart';
 import 'package:fast_app_base/screen/main/fab/w_floating_dangn_button.riverpod.dart';
 import 'package:fast_app_base/screen/main/s_main.dart';
+import 'package:fast_app_base/screen/main/tab/tab_item.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class FloatingDangnButton extends ConsumerWidget {
   FloatingDangnButton({super.key});
+  static const height = 100.0;
   final duration = 300.ms;
 
   @override
@@ -57,7 +59,20 @@ class FloatingDangnButton extends ConsumerWidget {
               ),
               Tap(
                 onTap: () {
-                  ref.read(floatingButtonStateProvider.notifier).onTabButton();
+                  final currentTab = ref.read(currentTabProvider);
+                  switch(currentTab){
+                    case TabItem.home:
+                      // TODO: Handle this case.
+                    case TabItem.localLife:
+                      // TODO: Handle this case.
+                    case TabItem.nearMe:
+                      // TODO: Handle this case.
+                    case TabItem.chat:
+                      // TODO: Handle this case.
+                    case TabItem.my:
+                      // TODO: Handle this case.
+                  }
+                  ref.read(floatingButtonStateProvider.notifier).toggleMenu();
                 },
                 child: AnimatedContainer(
                   duration: duration,
@@ -83,12 +98,12 @@ class FloatingDangnButton extends ConsumerWidget {
                       ),
                     ],
                   ),
-                ).pOnly(
-                    bottom: MainScreenState.bottomNavigationBarHeight +
-                        context.viewPaddingBottom +
-                        10,
-                    right: 20),
-              ),
+                ),
+              ).pOnly(
+                  bottom: MainScreenState.bottomNavigationBarHeight +
+                      context.viewPaddingBottom +
+                      10,
+                  right: 20),
             ],
           ),
         )

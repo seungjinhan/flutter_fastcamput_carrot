@@ -11,7 +11,7 @@ enum TabItem {
   localLife(Icons.holiday_village_outlined, '동네생활', LocalLifeFragment()),
   nearMe(Icons.pin_drop_outlined, '내 근처', NearMeFragment()),
   chat(Icons.chat_bubble_outline, '채팅', ChatFragment()),
-  me(Icons.person_outline_rounded, '나의당근', MyFragment());
+  my(Icons.person_outline_rounded, '나의당근', MyFragment());
 
   final IconData activeIcon;
   final IconData inActiveIcon;

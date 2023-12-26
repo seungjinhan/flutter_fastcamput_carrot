@@ -6,7 +6,7 @@ class FloatingButtonStateNotifier extends StateNotifier<FloatingButtonState> {
 
   bool needToMakeButtonBigger = false;
 
-  void onTabButton() {
+  void toggleMenu() {
     final isExpanded = state.isExpanded;
     final isSmall = state.isSmall;
 
