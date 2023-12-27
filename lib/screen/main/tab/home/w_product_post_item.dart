@@ -35,14 +35,14 @@ class ProductPostItem extends StatelessWidget {
                 Row(
                   children: [
                     post.address.simpleAddress.text
-                        .color(context.appColors.lessImportColor)
+                        .color(context.appColors.lessImport)
                         .make(),
-                    '-'.text.color(context.appColors.lessImportColor).make(),
+                    '-'.text.color(context.appColors.lessImport).make(),
                     timeago
                         .format(post.created,
                             locale: context.locale.languageCode)
                         .text
-                        .color(context.appColors.lessImportColor)
+                        .color(context.appColors.lessImport)
                         .make(),
                   ],
                 ),
