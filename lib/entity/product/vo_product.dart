@@ -7,11 +7,10 @@ part 'vo_product.freezed.dart';
 @freezed
 class Product with _$Product {
   const factory Product(
-      final User user,
-      final String name,
-      final int price,
-      final String description,
-      final ProductStatus status,
-      final List<String> images,
-      ) = _Product;
+    final User user,
+    final String name,
+    final int price,
+    final ProductStatus status,
+    final List<String> images,
+  ) = _Product;
 }

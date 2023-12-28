@@ -1,5 +1,6 @@
 import 'package:fast_app_base/common/common.dart';
 import 'package:fast_app_base/entity/post/vo_product_post.dart';
+import 'package:fast_app_base/entity/post/vo_simple_product_post.dart';
 import 'package:fast_app_base/entity/product/product_status.dart';
 import 'package:fast_app_base/entity/product/vo_product.dart';
 import 'package:fast_app_base/entity/user/vo_address.dart';
@@ -30,26 +31,24 @@ final user3 = User(
   temperature: 56.2,
 );
 
-final product1 =
-    Product(user1, '아이폰14', 800000, '잘쓰던거에요1', ProductStatus.normal, [
+final product1 = Product(user1, '아이폰14', 800000, ProductStatus.normal, [
   picSum(100),
   picSum(200),
   picSum(300),
 ]);
-final product2 =
-    Product(user2, '아이폰11', 400000, '잘쓰던거에요2', ProductStatus.normal, [
+final product2 = Product(user2, '아이폰11', 400000, ProductStatus.normal, [
   picSum(400),
   picSum(600),
   picSum(900),
 ]);
-final product3 =
-    Product(user3, '아이폰12', 600000, '잘쓰던거에요3', ProductStatus.normal, [
+final product3 = Product(user3, '아이폰12', 600000, ProductStatus.normal, [
   picSum(500),
   picSum(700),
   picSum(800),
 ]);
 
-final post1 = ProductPost(
+final post1 = SimpleProductPost(
+    1,
     product1.user,
     product1,
     '글내욥입니다',
@@ -57,7 +56,8 @@ final post1 = ProductPost(
     2,
     3,
     DateTime.now().subtract(30.minutes));
-final post2 = ProductPost(
+final post2 = SimpleProductPost(
+    2,
     product2.user,
     product2,
     '글내욥입니다22222',
@@ -65,7 +65,8 @@ final post2 = ProductPost(
     1,
     2,
     DateTime.now().subtract(10.minutes));
-final post3 = ProductPost(
+final post3 = SimpleProductPost(
+    3,
     product3.user,
     product3,
     '글내욥입니다223222',
