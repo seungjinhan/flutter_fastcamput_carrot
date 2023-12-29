@@ -4,11 +4,13 @@ import 'package:fast_app_base/common/widget/animated_height_collapse.dart';
 import 'package:fast_app_base/screen/main/fab/w_floating_dangn_button.riverpod.dart';
 import 'package:fast_app_base/screen/main/s_main.dart';
 import 'package:fast_app_base/screen/main/tab/tab_item.dart';
+import 'package:fast_app_base/screen/write/s_write.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class FloatingDangnButton extends ConsumerWidget {
   FloatingDangnButton({super.key});
+
   static const height = 100.0;
   final duration = 300.ms;
 
@@ -37,40 +39,66 @@ class FloatingDangnButton extends ConsumerWidget {
               AnimatedOpacity(
                 opacity: isExpanded ? 1 : 0,
                 duration: duration,
-                child: Container(
-                  width: 160,
-                  padding: const EdgeInsets.all(15),
-                  margin: const EdgeInsets.only(right: 15, bottom: 10),
-                  decoration: BoxDecoration(
-                    color: context.appColors.floatActionLayer,
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      _floatItem('알바', '$basePath/fab/fab_01.png'),
-                      _floatItem('과외/클래스', '$basePath/fab/fab_02.png'),
-                      _floatItem('농수산물', '$basePath/fab/fab_03.png'),
-                      _floatItem('부동산', '$basePath/fab/fab_04.png'),
-                      _floatItem('중고차', '$basePath/fab/fab_05.png'),
-                    ],
-                  ),
+                child: Column(
+                  children: [
+                    Container(
+                      width: 160,
+                      padding: const EdgeInsets.all(15),
+                      margin: const EdgeInsets.only(right: 15),
+                      decoration: BoxDecoration(
+                        color: context.appColors.floatActionLayer,
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          _floatItem('알바', '$basePath/fab/fab_01.png'),
+                          _floatItem('과외/클래스', '$basePath/fab/fab_02.png'),
+                          _floatItem('농수산물', '$basePath/fab/fab_03.png'),
+                          _floatItem('부동산', '$basePath/fab/fab_04.png'),
+                          _floatItem('중고차', '$basePath/fab/fab_05.png'),
+                        ],
+                      ),
+                    ),
+                    height5,
+                    Tap(
+                      onTap: () {
+                        //글작성페이지
+                        Nav.push(const WriteScreen());
+                      },
+                      child: Container(
+                        width: 160,
+                        padding: const EdgeInsets.all(15),
+                        margin: const EdgeInsets.only(right: 15, bottom: 10),
+                        decoration: BoxDecoration(
+                          color: context.appColors.floatActionLayer,
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            _floatItem('내 물건 팔기', '$basePath/fab/fab_06.png'),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
               ),
               Tap(
                 onTap: () {
                   final currentTab = ref.read(currentTabProvider);
-                  switch(currentTab){
+                  switch (currentTab) {
                     case TabItem.home:
-                      // TODO: Handle this case.
+                    // TODO: Handle this case.
                     case TabItem.localLife:
-                      // TODO: Handle this case.
+                    // TODO: Handle this case.
                     case TabItem.nearMe:
-                      // TODO: Handle this case.
+                    // TODO: Handle this case.
                     case TabItem.chat:
-                      // TODO: Handle this case.
+                    // TODO: Handle this case.
                     case TabItem.my:
-                      // TODO: Handle this case.
+                    // TODO: Handle this case.
                   }
                   ref.read(floatingButtonStateProvider.notifier).toggleMenu();
                 },
