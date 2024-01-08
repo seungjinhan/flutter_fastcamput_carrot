@@ -24,6 +24,7 @@ class MainScreenState extends ConsumerState<MainScreen>
       TabItem.values.map((e) => GlobalKey<NavigatorState>()).toList();
 
   TabItem get _currentTab => ref.watch(currentTabProvider);
+
   int get _currentIndex => tabs.indexOf(_currentTab);
 
   GlobalKey<NavigatorState> get _currentTabNavigationKey =>
@@ -51,9 +52,8 @@ class MainScreenState extends ConsumerState<MainScreen>
               drawer: const MenuDrawer(),
               body: Container(
                 padding: EdgeInsets.only(
-                    bottom: extendBody
-                        ? 60 - bottomNavigationBarBorderRadius
-                        : 0),
+                    bottom:
+                        extendBody ? 60 - bottomNavigationBarBorderRadius : 0),
                 child: SafeArea(
                   bottom: !extendBody,
                   child: pages,
@@ -100,7 +100,7 @@ class MainScreenState extends ConsumerState<MainScreen>
 
   Widget _buildBottomNavigationBar(BuildContext context) {
     return Container(
-      height: bottomNavigationBarHeight,
+      height: bottomNavigationBarHeight + context.viewPaddingBottom,
       decoration: const BoxDecoration(
         boxShadow: [
           BoxShadow(color: Colors.black26, spreadRadius: 0, blurRadius: 10),
