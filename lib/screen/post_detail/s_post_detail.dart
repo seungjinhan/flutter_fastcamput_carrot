@@ -48,7 +48,7 @@ class _PostDetail extends HookWidget {
         children: [
           Positioned.fill(
             child: SingleChildScrollView(
-              padding: EdgeInsets.only(bottom: bottomMenuHeight),
+              padding: const EdgeInsets.only(bottom: bottomMenuHeight),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -147,10 +147,15 @@ class _ImagePager extends StatelessWidget {
           PageView(
             controller: pageController,
             children: simpleProductPost.product.images
-                .map((e) => CachedNetworkImage(
+                .map(
+                  (e) => Hero(
+                    tag: '${simpleProductPost.id}_${e}',
+                    child: CachedNetworkImage(
                       imageUrl: e,
                       fit: BoxFit.fill,
-                    ))
+                    ),
+                  ),
+                )
                 .toList(),
           ),
           if (simpleProductPost.product.images.length > 1)

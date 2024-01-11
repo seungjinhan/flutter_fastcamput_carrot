@@ -11,7 +11,12 @@ import 'w_menu_drawer.dart';
 final currentTabProvider = StateProvider<TabItem>((ref) => TabItem.home);
 
 class MainScreen extends ConsumerStatefulWidget {
-  const MainScreen({super.key});
+  final TabItem firstTab;
+
+  const MainScreen({
+    super.key,
+    this.firstTab = TabItem.home,
+  });
 
   @override
   ConsumerState<MainScreen> createState() => MainScreenState();
@@ -41,6 +46,16 @@ class MainScreenState extends ConsumerState<MainScreen>
   }
 
   @override
+  void didUpdateWidget(covariant MainScreen oldWidget) {
+    if (oldWidget.firstTab != widget.firstTab) {
+      delay(() {
+        ref.read(currentTabProvider.notifier).state = widget.firstTab;
+      }, 0.ms);
+    }
+    super.didUpdateWidget(oldWidget);
+  }
+
+  @override
   Widget build(BuildContext context) {
     return WillPopScope(
       onWillPop: _handleBackPressed,
@@ -48,8 +63,10 @@ class MainScreenState extends ConsumerState<MainScreen>
         child: Stack(
           children: [
             Scaffold(
-              extendBody: extendBody, //bottomNavigationBar 아래 영역 까지 그림
+              extendBody: extendBody,
+              //bottomNavigationBar 아래 영역 까지 그림
               drawer: const MenuDrawer(),
+              drawerEnableOpenDragGesture: false,
               body: Container(
                 padding: EdgeInsets.only(
                     bottom:
