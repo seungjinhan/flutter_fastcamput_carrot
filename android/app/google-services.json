@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "155485410570",
+    "firebase_url": "https://fastcarrot-c7f71-default-rtdb.firebaseio.com",
+    "project_id": "fastcarrot-c7f71",
+    "storage_bucket": "fastcarrot-c7f71.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:155485410570:android:0dc0ef524c5e99f61416f3",
+        "android_client_info": {
+          "package_name": "com.example.fast_app_base"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAvXbKCUaFN9U9br-hBya1rohl7drXDHF4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

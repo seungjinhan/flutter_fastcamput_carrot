@@ -14,7 +14,7 @@ class FloatingButtonStateNotifier extends StateNotifier<FloatingButtonState> {
         isExpanded: !state.isExpanded,
         isSmall: needToMakeButtonBigger ? false : true);
 
-    if(needToMakeButtonBigger){
+    if (needToMakeButtonBigger) {
       needToMakeButtonBigger = false;
     }
 
@@ -24,17 +24,21 @@ class FloatingButtonStateNotifier extends StateNotifier<FloatingButtonState> {
   }
 
   void changeButtonSize(bool isSmall) {
-    if(state.isExpanded){
+    if (state.isExpanded) {
       return;
     }
 
     state = state.copyWith(isSmall: isSmall);
+  }
+
+  void hideButton(bool isHide) {
+    state = state.copyWith(isHided: isHide);
   }
 }
 
 final floatingButtonStateProvider =
     StateNotifierProvider<FloatingButtonStateNotifier, FloatingButtonState>(
   (ref) => FloatingButtonStateNotifier(
-    const FloatingButtonState(false, false),
+    const FloatingButtonState(false, false, false),
   ),
 );

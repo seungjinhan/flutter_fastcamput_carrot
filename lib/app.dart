@@ -1,5 +1,6 @@
 import 'package:fast_app_base/auth.dart';
 import 'package:fast_app_base/common/common.dart';
+import 'package:fast_app_base/common/fcm/fcm_manager.dart';
 import 'package:fast_app_base/common/router/transition/fade_transition_page.dart';
 import 'package:fast_app_base/common/theme/custom_theme_app.dart';
 import 'package:fast_app_base/common/widget/w_round_button.dart';
@@ -13,22 +14,21 @@ import 'package:go_router/go_router.dart';
 
 import 'common/theme/custom_theme.dart';
 
-class App extends StatefulWidget {
-  static final GlobalKey<NavigatorState> navigatorKey = GlobalKey();
-
+class App extends ConsumerStatefulWidget {
   ///light, dark 테마가 준비되었고, 시스템 테마를 따라가게 하려면 해당 필드를 제거 하시면 됩니다.
   static const defaultTheme = CustomTheme.dark;
   static bool isForeground = true;
   static final GlobalKey<ScaffoldMessengerState> scaffoldMessengerKey =
       GlobalKey();
+  static final GlobalKey<NavigatorState> navigatorKey = GlobalKey();
 
   const App({super.key});
 
   @override
-  State<App> createState() => AppState();
+  ConsumerState<App> createState() => AppState();
 }
 
-class AppState extends State<App> with WidgetsBindingObserver {
+class AppState extends ConsumerState<App> with WidgetsBindingObserver {
   final ValueKey<String> _scaffoldKey = const ValueKey<String>('App scaffold');
 
   final _auth = DaangnAuth();
@@ -36,6 +36,8 @@ class AppState extends State<App> with WidgetsBindingObserver {
   @override
   void initState() {
     super.initState();
+    FcmManager.requestPermission();
+    FcmManager.initialize(ref);
     WidgetsBinding.instance.addObserver(this);
   }
 
@@ -49,18 +51,16 @@ class AppState extends State<App> with WidgetsBindingObserver {
   Widget build(BuildContext context) {
     return CustomThemeApp(
       child: Builder(builder: (context) {
-        return ProviderScope(
-          child: DaangnAuthScope(
-            notifier: _auth,
-            child: MaterialApp.router(
-              scaffoldMessengerKey: App.scaffoldMessengerKey,
-              routerConfig: _router,
-              localizationsDelegates: context.localizationDelegates,
-              supportedLocales: context.supportedLocales,
-              locale: context.locale,
-              title: 'Image Finder',
-              theme: context.themeType.themeData,
-            ),
+        return DaangnAuthScope(
+          notifier: _auth,
+          child: MaterialApp.router(
+            scaffoldMessengerKey: App.scaffoldMessengerKey,
+            routerConfig: _router,
+            localizationsDelegates: context.localizationDelegates,
+            supportedLocales: context.supportedLocales,
+            locale: context.locale,
+            title: 'Image Finder',
+            theme: context.themeType.themeData,
           ),
         );
       }),
