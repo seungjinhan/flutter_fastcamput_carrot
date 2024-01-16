@@ -21,8 +21,8 @@ void main() async {
   setLocaleMessages('ko', KoMessages());
 
   runApp(EasyLocalization(
-      supportedLocales: const [Locale('en'), Locale('ko')],
-      fallbackLocale: const Locale('en'),
+      supportedLocales: const [Locale('ko'), Locale('en')],
+      fallbackLocale: const Locale('ko'),
       path: 'assets/translations',
       useOnlyLangCode: true,
       child: const ProviderScope(child: App())));

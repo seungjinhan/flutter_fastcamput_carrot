@@ -3,7 +3,7 @@ import 'package:fast_app_base/common/common.dart';
 import 'package:fast_app_base/entity/post/vo_simple_product_post.dart';
 import 'package:fast_app_base/screen/post_detail/s_post_detail.dart';
 import 'package:flutter/material.dart';
-import 'package:timeago/timeago.dart' as timeago;
+// import 'package:timeago/timeago.dart' as timeago;
 
 class ProductPostItem extends StatelessWidget {
   final SimpleProductPost post;
@@ -58,10 +58,9 @@ class ProductPostItem extends StatelessWidget {
                           .color(context.appColors.lessImport)
                           .make(),
                       '-'.text.color(context.appColors.lessImport).make(),
-                      timeago
-                          .format(post.created,
-                              locale: context.locale.languageCode)
-                          .text
+                      // timeago.format(post.created,
+                      //                               locale: context.locale.languageCode)
+                      post.created.timeago.text
                           .color(context.appColors.lessImport)
                           .make(),
                     ],
