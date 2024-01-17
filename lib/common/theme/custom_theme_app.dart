@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../app.dart';
 import '../data/preference/prefs.dart';
@@ -25,10 +26,12 @@ class _CustomThemeAppState extends State<CustomThemeApp> {
 
   @override
   Widget build(BuildContext context) {
-    return CustomThemeHolder(
-      changeTheme: handleChangeTheme,
-      theme: theme,
-      child: widget.child,
+    return ProviderScope(
+      child: CustomThemeHolder(
+        changeTheme: handleChangeTheme,
+        theme: theme,
+        child: widget.child,
+      ),
     );
   }
 

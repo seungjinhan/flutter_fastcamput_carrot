@@ -49,21 +49,19 @@ class AppState extends ConsumerState<App> with WidgetsBindingObserver {
 
   @override
   Widget build(BuildContext context) {
-    return CustomThemeApp(
-      child: Builder(builder: (context) {
-        return DaangnAuthScope(
-          notifier: _auth,
-          child: MaterialApp.router(
-            scaffoldMessengerKey: App.scaffoldMessengerKey,
-            routerConfig: _router,
-            localizationsDelegates: context.localizationDelegates,
-            supportedLocales: context.supportedLocales,
-            locale: context.locale,
-            title: 'Image Finder',
-            theme: context.themeType.themeData,
-          ),
-        );
-      }),
+    return ProviderScope(
+      child: DaangnAuthScope(
+        notifier: _auth,
+        child: MaterialApp.router(
+          scaffoldMessengerKey: App.scaffoldMessengerKey,
+          routerConfig: _router,
+          localizationsDelegates: context.localizationDelegates,
+          supportedLocales: context.supportedLocales,
+          locale: context.locale,
+          title: 'Image Finder',
+          theme: context.themeType.themeData,
+        ),
+      ),
     );
   }
 

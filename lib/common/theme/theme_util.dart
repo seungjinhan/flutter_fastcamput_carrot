@@ -13,16 +13,18 @@ class ThemeUtil {
     Prefs.appTheme.set(theme); // 또는 Prefs.appTheme(theme) 이렇게 저장도 가능
     context.changeTheme(theme);
   }
-
-  static void toggleTheme(BuildContext context) {
-    final theme = context.themeType;
-    switch (theme) {
-      case CustomTheme.dark:
-        changeTheme(context, CustomTheme.light);
-        break;
-      case CustomTheme.light:
-        changeTheme(context, CustomTheme.dark);
-        break;
-    }
-  }
+//
+// static void toggleTheme(BuildContext context) {
+//   final theme = context.themeType;
+//   switch (theme) {
+//     case CustomTheme.dark:
+//       changeTheme(context, CustomTheme.light);
+//       break;
+//     case CustomTheme.light:
+//       changeTheme(context, CustomTheme.dark);
+//       break;
+//     case CustomTheme.carrot:
+//     // TODO: Handle this case.
+//   }
+// }
 }
